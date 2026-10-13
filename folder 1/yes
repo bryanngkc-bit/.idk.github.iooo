@@ -1,1 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Trace · AI vs Human Text Detector</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body class='is-home'>
+<header class="top"><div class="wrap">
+  <a class="brand" href="#/" data-route="home"><i></i>Trace</a>
+  <nav><a class='hide-m' href='#/' data-route='home'>Home</a><a href='#/tips' data-route='tips'>Tips</a><a href='#/feedback' data-route='feedback'>Feedback</a><a class='navcta' href='#/analyzer' data-route='analyzer'>Analyze<span class='hide-s'> text</span></a></nav>
+</div></header>
 
+<main class="wrap" id="top">
+  <div class='view active' id='view-home'>
+  <div class='landing'>
+    <svg class='landing-art' viewBox='0 0 1600 900' preserveAspectRatio='xMidYMid slice' aria-hidden='true' focusable='false'>
+      <defs>
+        <linearGradient id='lSky' x1='0' y1='0' x2='0' y2='1'><stop offset='0' stop-color='#e6e2ee'/><stop offset='.42' stop-color='#f2d9d6'/><stop offset='.62' stop-color='#f8e2cc'/><stop offset='1' stop-color='#efe6e4'/></linearGradient>
+        <radialGradient id='lSun' cx='1260' cy='470' r='640' gradientUnits='userSpaceOnUse'><stop offset='0' stop-color='#ffd2a6' stop-opacity='.9'/><stop offset='1' stop-color='#ffd2a6' stop-opacity='0'/></radialGradient>
+        <linearGradient id='lFar' x1='0' y1='300' x2='0' y2='640' gradientUnits='userSpaceOnUse'><stop offset='0' stop-color='#fbeef0'/><stop offset='.35' stop-color='#d9c7d3'/><stop offset='1' stop-color='#b3aec6'/></linearGradient>
+        <linearGradient id='lMid' x1='0' y1='200' x2='0' y2='680' gradientUnits='userSpaceOnUse'><stop offset='0' stop-color='#fffafa'/><stop offset='.22' stop-color='#f3e6ea'/><stop offset='.4' stop-color='#aaa5bd'/><stop offset='1' stop-color='#6e7490'/></linearGradient>
+        <linearGradient id='lRight' x1='0' y1='300' x2='0' y2='720' gradientUnits='userSpaceOnUse'><stop offset='0' stop-color='#bdb5c0'/><stop offset='1' stop-color='#6c6a7c'/></linearGradient>
+        <linearGradient id='lSea' x1='0' y1='0' x2='0' y2='1'><stop offset='0' stop-color='#f1ecf0'/><stop offset='.5' stop-color='#cfd0dc'/><stop offset='1' stop-color='#a9acc0'/></linearGradient>
+        <radialGradient id='lHaze' cx='800' cy='400' r='580' gradientUnits='userSpaceOnUse'><stop offset='0' stop-color='#fff' stop-opacity='.6'/><stop offset='1' stop-color='#fff' stop-opacity='0'/></radialGradient>
+        <filter id='lBlur' x='-20%' y='-40%' width='140%' height='180%'><feGaussianBlur stdDeviation='22'/></filter>
+      </defs>
+      <rect width='1600' height='900' fill='url(#lSky)'/>
+      <rect width='1600' height='900' fill='url(#lSun)'/>
+      <path d='M-20 480 L90 410 L170 440 L260 370 L330 400 L430 330 L520 380 L620 330 L720 390 L820 360 L930 420 L1040 400 L1160 440 L1280 400 L1400 430 L1500 380 L1620 420 L1620 650 L-20 650Z' fill='url(#lFar)' opacity='.8'/>
+      <path d='M900 480 L1000 410 L1090 345 L1130 300 L1180 350 L1260 385 L1330 415 L1400 445 L1400 650 L900 650Z' fill='#cdbccb' opacity='.85'/>
+      <path d='M-20 560 L80 470 L150 500 L240 410 L330 330 L400 250 L440 205 L480 245 L520 280 L575 330 L640 380 L720 430 L820 470 L930 520 L1010 580 L1010 690 L-20 690Z' fill='url(#lMid)'/>
+      <path d='M440 205 L480 245 L520 280 L575 330 L520 345 L470 300 L450 260Z' fill='#7a7f9c' opacity='.32'/>
+      <path d='M330 330 L400 250 L420 300 L380 365Z' fill='#7a7f9c' opacity='.25'/>
+      <path d='M150 500 L240 410 L270 470 L210 520Z' fill='#7a7f9c' opacity='.22'/>
+      <path d='M1620 300 L1500 330 L1400 400 L1280 470 L1150 545 L1000 610 L1000 720 L1620 720Z' fill='url(#lRight)' opacity='.92'/>
+      <path d='M1620 300 L1500 330 L1430 385 L1500 405 L1620 365Z' fill='#eadfe6' opacity='.5'/>
+      <rect y='575' width='1600' height='325' fill='url(#lSea)'/>
+      <g class='drift' filter='url(#lBlur)'>
+        <ellipse cx='-50' cy='650' rx='320' ry='80' fill='#fff' opacity='.9'/>
+        <ellipse cx='200' cy='600' rx='320' ry='70' fill='#fff' opacity='.95'/>
+        <ellipse cx='620' cy='590' rx='360' ry='80' fill='#fff' opacity='.95'/>
+        <ellipse cx='1060' cy='610' rx='340' ry='70' fill='#fff' opacity='.9'/>
+        <ellipse cx='1450' cy='600' rx='340' ry='80' fill='#fff' opacity='.9'/>
+        <ellipse cx='1700' cy='660' rx='320' ry='80' fill='#fff' opacity='.9'/>
+        <ellipse cx='400' cy='690' rx='440' ry='90' fill='#f6f3f7' opacity='.85'/>
+        <ellipse cx='1000' cy='705' rx='480' ry='95' fill='#f6f3f7' opacity='.85'/>
+        <ellipse cx='1500' cy='725' rx='380' ry='90' fill='#f6f3f7' opacity='.85'/>
+        <ellipse cx='700' cy='765' rx='460' ry='80' fill='#fff' opacity='.7'/>
+        <ellipse cx='300' cy='820' rx='540' ry='110' fill='#a4a7bd' opacity='.55'/>
+        <ellipse cx='1100' cy='830' rx='580' ry='120' fill='#9a9db6' opacity='.5'/>
+      </g>
+      <path d='M-20 900 L-20 852 L60 828 L120 848 L210 820 L300 852 L380 900Z' fill='#5f6074' opacity='.8'/>
+      <path d='M520 900 L600 870 L700 854 L790 882 L850 900Z' fill='#5f6074' opacity='.75'/>
+      <rect width='1600' height='900' fill='url(#lHaze)'/>
+      <rect width='1600' height='900' fill='#fff' opacity='.12'/>
+    </svg>
+    <div class='landing-in'>
+      <div class='eyebrow'>✦ Free AI text detector</div>
+      <h1>Human or machine?<br>Know in seconds.</h1>
+      <p>Paste any text and Trace scores eight writing signals, then highlights the exact sentences that sound like AI.</p>
+      <div class='landing-cta'><a class='btn dark' href='#/analyzer' data-route='analyzer'>Analyze a text →</a><a class='btn light' href='#/tips' data-route='tips'>How it works</a></div>
+    </div>
+  </div>
+
+  <section style='padding-top:44px'>
+    <h2 style='font-size:1.9rem;margin:0 0 18px'>What Trace looks at</h2>
+    <div class='feat'>
+      <div class='card'><div class='ic'>📊</div><h3>Eight writing signals</h3><p>Rhythm, wording, transitions, informality and more, each scored on its own so you can see what drove the result.</p></div>
+      <div class='card'><div class='ic'>🖍️</div><h3>Sentence-level highlights</h3><p>See precisely which sentences trip the detector, with a hover reason behind every flag.</p></div>
+      <div class='card'><div class='ic'>⚖️</div><h3>Honest about uncertainty</h3><p>Short or mixed text is marked as low confidence, because no detector is ever 100% sure.</p></div>
+    </div>
+  </section>
+
+  <section style='padding-top:8px'>
+    <div class='cta-band'>
+      <div><h3>Ready to test a text?</h3><p>It takes a few seconds and the pattern analysis runs right in your browser.</p></div>
+      <a href='#/analyzer' data-route='analyzer'>Open the analyzer →</a>
+    </div>
+  </section>
+  </div>
+
+  <div class='view' id='view-analyzer'>
+  <div class='pagehead'><h1>Analyzer</h1><p>Paste any text below. Trace combines an 8-signal statistical analysis with an optional second opinion, then shows you why it reached its verdict, sentence by sentence.</p></div>
+  <section id='detector'>
+    <div class="card">
+      <textarea id="input" placeholder="Paste at least ~100 words for a meaningful result. The more text, the better the accuracy." aria-label="Text to analyze"></textarea>
+      <div class="row">
+        <div class="small muted"><span class="count" id="wc">0 words</span> · <button class="btn ghost" id="sAI" type="button">Try AI-style sample</button> <button class="btn ghost" id="sHu" type="button">Try human-style sample</button></div>
+        <div style="display:flex;gap:14px;align-items:center;flex-wrap:wrap">
+          <label class="toggle" id="llmWrap" style="display:none"><input type="checkbox" id="useLLM" checked> Add Claude's second opinion</label>
+          <button class="btn" id="go" type="button">Analyze text</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="results" class="card" aria-live="polite">
+      <div class="verdict">
+        <div>
+          <div class="muted small">Probability the text is AI-generated</div>
+          <div class="big"><span id="pct">0</span><small>%</small></div>
+          <div class="label" id="lab"></div>
+          <div class="meter"><b id="needle" style="left:0%"></b></div>
+          <div class="scale"><span>Human</span><span>Uncertain</span><span>AI</span></div>
+          <div style="margin-top:12px" id="badges"></div>
+        </div>
+        <div class="mini">
+          <div><span>Pattern analysis</span><strong id="pHeur">–</strong></div>
+          <div><span>Claude's read</span><strong id="pLLM">–</strong></div>
+          <div class="small muted" style="background:none;padding:0;display:block" id="mixNote"></div>
+        </div>
+      </div>
+      <div class="notice" id="warn"></div>
+
+      <h3 class="h">Signal breakdown</h3>
+      <div id="signals"></div>
+
+      <h3 class="h">Sentence-level flags</h3>
+      <p class="small muted" style="margin-top:-6px">Highlighted sentences contain patterns common in AI writing. Hover for the reason. A few flags in an otherwise human text is normal.</p>
+      <div class="hl" id="hl"></div>
+
+      <div id="llmBox" style="display:none">
+        <h3 class="h">Claude's reasoning</h3>
+        <div class="llm" id="llmText"></div>
+      </div>
+
+      <h3 class="h">Was this result right?</h3>
+      <div class="small muted">Your answer helps you track how well the detector works on the texts you test.</div>
+      <div class="fb-chips" id="verdictFb">
+        <button class="chip" data-v="correct" type="button">👍 Looks right</button>
+        <button class="chip" data-v="actually_human" type="button">Actually written by a human</button>
+        <button class="chip" data-v="actually_ai" type="button">Actually written by AI</button>
+      </div>
+    </div>
+    <div class="crosslinks">
+      <a href="#/tips" data-route="tips">💡 Tips: how to spot AI text →</a>
+      <a href="#/feedback" data-route="feedback">💬 Send feedback →</a>
+    </div>
+  </section>
+  </div>
+
+  <div class="view" id="view-tips">
+  <div class="pagehead"><h1>Tips</h1><p>What the signals mean, how to make your own writing sound like you, and how to use detectors without being misled.</p></div>
+  <section id="tips">
+    <div class="card use" style="margin-bottom:16px;border-top:4px solid var(--accent)">
+      <h3 style="font-size:1.3rem;margin-bottom:6px">Getting the most out of Trace</h3>
+      <ol>
+        <li><b>Paste a full passage.</b> Aim for 100+ words. Short snippets give unreliable scores, and Trace will tell you when a text is too short.</li>
+        <li><b>Keep your paragraph breaks.</b> Trace uses paragraph and sentence structure as signals, so pasting plain text without line breaks hides useful information.</li>
+        <li><b>Click Analyze text.</b> You'll get an overall percentage, a signal breakdown, and highlighted sentences.</li>
+        <li><b>Look beyond the number.</b> The breakdown shows which signals pushed the score and why. The highlighted sentences show exactly where the AI-like patterns are.</li>
+        <li><b>Rate the result.</b> Use the buttons under each result and your scorecard on the Feedback page will show how well Trace matches your own judgment.</li>
+        <li><b>Not sure how it behaves?</b> Use the two sample buttons on the analyzer to see what a clear AI-style and human-style text look like.</li>
+      </ol>
+      <div class="zones">
+        <div><b style="color:var(--human)">0–35% · Human</b>Mostly varied, personal, specific writing.</div>
+        <div><b style="color:var(--mid)">35–65% · Uncertain</b>Mixed, edited, formal or short text often lands here.</div>
+        <div><b style="color:var(--ai)">65–100% · AI</b>Even rhythm, stock phrases and formulaic structure.</div>
+      </div>
+    </div>
+    <div class="grid3">
+      <div class="card tip">
+        <div class="tag">Spotting</div>
+        <h3>Telltale signs of AI text</h3>
+        <ul>
+          <li><b>Even rhythm.</b> Sentences of similar length, with little variation (low "burstiness").</li>
+          <li><b>Stock phrases.</b> "Delve into", "tapestry", "it's important to note", "in today's fast-paced world".</li>
+          <li><b>Tidy structure.</b> Every paragraph the same size, a neat intro, three points, a "In conclusion".</li>
+          <li><b>Frequent transitions.</b> Moreover, Furthermore, Additionally at sentence starts.</li>
+          <li><b>"Not just X, it's Y"</b> constructions and heavy em dashes.</li>
+          <li><b>No lived detail.</b> Few specific names, dates, anecdotes, or opinions.</li>
+        </ul>
+      </div>
+      <div class="card tip">
+        <div class="tag">Writing</div>
+        <h3>Make your own writing sound like you</h3>
+        <ul>
+          <li>Mix short punchy sentences with long winding ones.</li>
+          <li>Add specifics only you know: names, places, numbers, a small story.</li>
+          <li>Take a position. Models hedge; people commit.</li>
+          <li>Use contractions and your natural vocabulary.</li>
+          <li>Cut filler openers and closers. Skip the summary paragraph.</li>
+          <li>Read it aloud. If you'd never say it, rewrite it.</li>
+        </ul>
+      </div>
+      <div class="card tip">
+        <div class="tag">Caution</div>
+        <h3>Using detectors responsibly</h3>
+        <ul>
+          <li><b>No detector is certain.</b> Treat results as a hint, never proof.</li>
+          <li><b>False positives happen,</b> especially for non-native English writers and formal or technical prose.</li>
+          <li>Short texts (under ~100 words) are unreliable.</li>
+          <li>Lightly edited AI text, or AI-assisted human text, is genuinely hard to classify.</li>
+          <li>Never make punitive decisions on a score alone. Ask for drafts, version history, or a conversation.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:16px">
+      <h3 style="font-size:1.25rem;margin-bottom:8px">How Trace works</h3>
+      <details open><summary>What are the 8 signals?</summary><p>Burstiness (sentence-length variation), AI-favoured vocabulary, transition-word openers, informal markers (contractions, slang, first person), em dash and semicolon density, paragraph and sentence-opener uniformity, formulaic constructions, and chat-style formatting. Each is scored 0–100% for "AI-likeness" and combined with weights, then adjusted for text length.</p></details>
+      <details><summary>How is the final percentage calculated?</summary><p>Each signal gets its own 0–100% score, and the signals are combined with different weights (AI-favoured wording and rhythm count most). The result is then adjusted for text length, so short texts are pulled toward 50% instead of giving a falsely confident answer. When the optional second-opinion check is switched on, its view is blended in and shown as a separate number so you can compare the two.</p></details>
+      <details><summary>How accurate is it?</summary><p>Honestly: good on clear-cut cases (raw chatbot output vs. casual human writing), shaky on edited, formal, short, or mixed text. No tool, including commercial ones, can reach 100%. Confidence badges tell you when to trust a result less.</p></details>
+      <details><summary>Is my text stored?</summary><p>The pattern analysis runs entirely in your browser and nothing is uploaded. If you leave the optional second-opinion toggle on, the text is also sent for one extra check on that request; untick it to keep everything on your device. Your ratings and feedback are saved only in your own browser.</p></details><details><summary>Why do I get different results for similar texts?</summary><p>Trace measures style, not authorship. Small changes such as adding contractions, varying sentence length or removing stock phrases can move the score, which is why the breakdown matters more than the single number.</p></details>
+    </div>
+    <div class="crosslinks"><a href="#/analyzer" data-route="analyzer">← Back to the analyzer</a><a href="#/feedback" data-route="feedback">Send feedback →</a></div>
+  </section>
+  </div>
+
+  <div class="view" id="view-feedback">
+  <div class="pagehead"><h1>Feedback</h1><p>Tell us what worked, what didn't, or what to add next. You can also review how the detector has done on the results you've rated.</p></div>
+  <section id="feedback">
+    <div class="fbgrid">
+      <div class="card">
+        <div class="muted small">Overall rating</div>
+        <div class="stars" id="stars"></div>
+        <label class="f" for="cat">Topic</label>
+        <select id="cat"><option>General feedback</option><option>Wrong result</option><option>Feature request</option><option>Bug report</option></select>
+        <label class="f" for="msg">Your message</label>
+        <textarea id="msg" style="min-height:110px" placeholder="What should be better?"></textarea>
+        <div class="row"><span class="small muted" id="fbStatus"></span><button class="btn" id="sendFb" type="button">Save feedback</button></div>
+      </div>
+      <div class="card">
+        <h3 style="font-size:1.15rem;margin-bottom:6px">Your detector scorecard</h3>
+        <div class="small muted" id="score">No ratings yet.</div>
+        <h3 style="font-size:1.05rem;margin:18px 0 6px">Saved feedback</h3>
+        <div id="entries" class="small muted">Nothing saved yet.</div>
+        <p class="small muted" style="margin-top:14px">Saved on this device only; it isn't sent anywhere.</p>
+      </div>
+    </div>
+    <div class="crosslinks"><a href="#/analyzer" data-route="analyzer">← Back to the analyzer</a></div>
+  </section>
+  </div>
+</main>
+<footer><div class="wrap">Trace gives probabilistic estimates, not proof. Please don't use it as the sole basis for accusing anyone of using AI.</div></footer>
+
+<script src="script.js"></script>
+</body>
+</html>
